@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <title>Add Pets Here</title>
     <script src="vendors/angular.min.js" charset="utf-8"></script>
-    <script src="scripts/app.js" charset="utf-8"></script>
+    <script src="scripts/FE-app.js" charset="utf-8"></script>
 
   </head>
-  <body>
+  <body ng-controller = 'petController'>
     <form>
       <input type="text" id='petNameIn' ng-model='petNameIn' placeholder="Pet Name"name="name" value="">
       <input type="text" id='petTypeIn' ng-model='petTypeIn'placeholder="Pet Species (e.g. Dog, Cat)"name="name" value="">
       <input type="text" id='petAgeIn' ng-model='petAgeIn'placeholder="Pet Age"name="name" value="">
       <input type="text" id='petImgIn' ng-model='petImgIn'placeholder="URL to pet picture"name="name" value="">
-      <button type="button" ng-click='sendPet()'name="button"></button>
+      <button type="button" ng-click="sendPet()"name="button">Add Pet</button>
     </form>
   </body>
 </html>
