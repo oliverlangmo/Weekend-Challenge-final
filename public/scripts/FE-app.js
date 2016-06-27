@@ -29,7 +29,7 @@ $scope.recvPet = function(){
 }]);
 myApp.controller('TabController', function ($scope, $window) {
   $scope.tabs = [
-    { title: 'Home', content: 'partials/home.html'},
+    { title:'Home', content: 'partials/home.html'},
     { title:'Add Pet', content: 'partials/addPet.html'},
     { title:'See Pets', content: 'partials/seePets.html'}
   ];
