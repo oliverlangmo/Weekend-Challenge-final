@@ -1,8 +1,8 @@
 console.log('scripts sourced');
 
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ui.bootstrap']);
 
-myApp.controller('petController', ['$scope', '$http', function($scope, $http){
+myApp.controller('animalController', ['$scope', '$http', function($scope, $http){
 
   $scope.sendPet = function(){
     var petInfo = {
@@ -17,7 +17,21 @@ myApp.controller('petController', ['$scope', '$http', function($scope, $http){
      url:'/addPet',
      data: petInfo
   });
+  $scope.recvPet();
   };
-
-
+$scope.recvPet = function(){
+  $http({
+    method: 'GET',
+    url:'/addPet',
+  }).then(function(response){
+    $scope.allThePets = response.data;
+  });
+};
 }]);
+myApp.controller('TabController', function ($scope, $window) {
+  $scope.tabs = [
+    { title: 'Home', content: 'partials/home.html'},
+    { title:'Add Pet', content: 'partials/addPet.html'},
+    { title:'View Pets', content: 'partials/seePets.html'}
+  ];
+});

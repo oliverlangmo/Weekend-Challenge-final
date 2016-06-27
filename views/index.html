@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html ng-app='myApp'>
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <title>Home</title>
     <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="vendors/ui-bootstrap-tpls-1.3.3.min.js" charset="utf-8"></script>
     <script src="scripts/FE-app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.css" charset="utf-8">
   </head>
   <body>
-<h2>Hello</h2>
+    <div ng-controller="TabController">
+          <uib-tabset active="active">
+            <uib-tab ng-repeat="tab in tabs" ng-click="recvPets()" heading="{{tab.title}}">
+              <div ng-include="tab.content"></div>
+            </uib-tab>
+          </uib-tabset>
+        </div>
   </body>
 </html>

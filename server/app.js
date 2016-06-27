@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 app.use(bodyParser.json());
 
+var addpetToDB = require('../models/addPet');
 var mongoURI = "mongodb://localhost:27017/petdb";
 var MongoDB = mongoose.connect(mongoURI).connection;
 
@@ -21,6 +22,32 @@ console.log('server is listening');
 });
 
 app.get('/', function(req,res){
-  res.sendFile(path.resolve('views/addPet.html'));
+  res.sendFile(path.resolve('views/index.html'));
 });
  app.use(express.static('public'));
+ app.post('/addPet', function(req,res){
+   console.log('hit post route with ' + req.body);
+   var savePet= new addpetToDB ({
+     pet_name: req.body.pet_name,
+     pet_kind: req.body.pet_kind,
+     pet_age: req.body.pet_age,
+     pet_pic: req.body.pet_pic
+   });
+   savePet.save(function(err){
+     if(err){
+       console.log(err);
+       res.sendStatus(500);
+     }else{
+       console.log('pet save complete');
+       res.sendStatus(200);
+     }
+   });
+ });
+ app.get('/addPet', function(req,res){
+    console.log('hit the get route');
+      addpetToDB.find()
+      .then( function( data ){
+        console.log(data);
+        res.send( data );
+      });
+    });
