@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 app.use(bodyParser.json());
 
+var urlencodedParser = bodyParser.urlencoded({extended:false}); 
+
 var addpetToDB = require('../models/addPet');
 var mongoURI = "mongodb://localhost:27017/petdb";
 var MongoDB = mongoose.connect(mongoURI).connection;
@@ -43,7 +45,7 @@ app.get('/', function(req,res){
      }
    });
  });
- app.get('/addPet', function(req,res){
+ app.get('/recvPet', function(req,res){
     console.log('hit the get route');
       addpetToDB.find()
       .then( function( data ){

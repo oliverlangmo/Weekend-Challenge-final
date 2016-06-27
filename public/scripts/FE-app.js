@@ -17,12 +17,11 @@ myApp.controller('animalController', ['$scope', '$http', function($scope, $http)
      url:'/addPet',
      data: petInfo
   });
-  $scope.recvPet();
   };
 $scope.recvPet = function(){
   $http({
     method: 'GET',
-    url:'/addPet',
+    url:'/recvPet',
   }).then(function(response){
     $scope.allThePets = response.data;
   });
@@ -32,6 +31,6 @@ myApp.controller('TabController', function ($scope, $window) {
   $scope.tabs = [
     { title: 'Home', content: 'partials/home.html'},
     { title:'Add Pet', content: 'partials/addPet.html'},
-    { title:'View Pets', content: 'partials/seePets.html'}
+    { title:'See Pets', content: 'partials/seePets.html'}
   ];
 });

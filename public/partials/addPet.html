@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html ng-app="myApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Add Pets Here</title>
-    <script src="vendors/ui-bootstrap-tpls-1.3.3.min.js" charset="utf-8"></script>
-    <script src="vendors/angular.min.js" charset="utf-8"></script>
-    <script src="scripts/FE-app.js" charset="utf-8"></script>
 
-  </head>
-  <body ng-controller = 'animalController'>
+  <div ng-controller = 'animalController'>
     <form>
       <input type="text" id='petNameIn' ng-model='petNameIn' placeholder="Pet Name"name="name" value="">
       <input type="text" id='petTypeIn' ng-model='petTypeIn'placeholder="Pet Species (e.g. Dog, Cat)"name="name" value="">
@@ -17,5 +8,5 @@
       <button type="button" ng-click="sendPet()"name="button">Add Pet</button>
     </form>
 
-  </body>
+  </div>
 </html>
