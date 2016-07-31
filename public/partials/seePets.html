@@ -1,15 +1,9 @@
 <div ng-controller='animalController' ng-init='recvPet()'>
     <table>
-       <tr>
-         <th>Pet Name</th>
-         <th>Pet Type</th>
-         <th>Pet Age</th>
-         <th>Picture of Pet</th>
-       </tr>
-       <tr ng-repeat="pet in allThePets">
-         <td>{{pet.pet_name }}</td>
-         <td>{{pet.pet_kind }}</td>
-         <td>{{pet.pet_age}}</td>
+      <tr ng-repeat="pet in allThePets">
+         <td><strong>Pet Name: </strong> {{pet.pet_name }}</td>
+         <td><strong>Pet Kind: </strong> {{pet.pet_kind }}</td>
+         <td><strong>Pet Age: </strong> {{pet.pet_age}}</td>
          <td><img ng-src={{pet.pet_pic}} class='img-thumbnail'></td>
        </tr>
      </table>

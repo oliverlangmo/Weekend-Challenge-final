@@ -2,8 +2,16 @@ console.log('scripts sourced');
 
 var myApp = angular.module('myApp', ['ui.bootstrap']);
 
+//sends pet to DB and gets pet from DB
 myApp.controller('animalController', ['$scope', '$http', function($scope, $http){
-
+  $scope.recvPet = function(){
+    $http({
+      method: 'GET',
+      url:'/recvPet',
+    }).then(function(response){
+      $scope.allThePets = response.data;
+    });
+  };
   $scope.sendPet = function(){
     var petInfo = {
       pet_name: $scope.petNameIn,
@@ -17,16 +25,11 @@ myApp.controller('animalController', ['$scope', '$http', function($scope, $http)
      url:'/addPet',
      data: petInfo
   });
-  };
-$scope.recvPet = function(){
-  $http({
-    method: 'GET',
-    url:'/recvPet',
-  }).then(function(response){
-    $scope.allThePets = response.data;
-  });
+$scope.recvPet();
 };
+
 }]);
+//manages tabbed views
 myApp.controller('TabController', function ($scope, $window) {
   $scope.tabs = [
     { title:'Home', content: 'partials/home.html'},
