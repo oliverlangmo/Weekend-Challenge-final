@@ -1,14 +1,16 @@
 console.log('scripts sourced');
 
-var myApp = angular.module('myApp', ['ui.bootstrap']);
+var myApp = angular.module('myApp', ['ui.bootstrap','ngMaterial', 'ngMessages']);
 
 //sends pet to DB and gets pet from DB
 myApp.controller('animalController', ['$scope', '$http', function($scope, $http){
   $scope.recvPet = function(){
     $http({
       method: 'GET',
-      url:'/recvPet',
-    }).then(function(response){
+      url:'/recvPet'
+    })
+    .then(function(response){
+      console.log(response);
       $scope.allThePets = response.data;
     });
   };
@@ -27,7 +29,26 @@ myApp.controller('animalController', ['$scope', '$http', function($scope, $http)
   });
 $scope.recvPet();
 };
+//deletes expense from DB
+$scope.deletePet = function(){
+  var petToDelete = {
+   id:event.target.id
+  };
+  console.log('delete this:',petToDelete);
+ $http({
+ method:'DELETE',
+ url:'/deleteExpense',
+ data: expenseToDelete,
+ headers: {'Content-Type': 'application/json;charset=utf-8'}
+   }).then( function mySuccess( response ) {
+             console.log( response.data ) ;
 
+         }, function myError( response ) {
+             console.log( response.statusText );
+
+});
+location.reload();
+};
 }]);
 //manages tabbed views
 myApp.controller('TabController', function ($scope, $window) {

@@ -4,19 +4,22 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 app.use(bodyParser.json());
-
+var cors = require('cors');
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 //schema for addPet
 var addpetToDB = require('../models/addPet');
 //connect to mongoDB
 var mongoURI = "mongodb://localhost:27017/petdb";
-var MongoDB = mongoose.connect(mongoURI).connection;
+mongoose.connect(mongoURI);
+var db = mongoose.connection;
 
-MongoDB.on('error', function (err) {
+
+
+db.on('error', function (err) {
     console.log('mongodb connection error:', err);
 });
 
-MongoDB.once('open', function () {
+db.once('open', function () {
   console.log('mongodb connection open!');
 });
 //set server
@@ -29,6 +32,7 @@ app.get('/', function(req,res){
 });
 //set static folder
 app.use(express.static('public'));
+
 //add pet to DB
 app.post('/addPet', function(req,res){
    console.log('hit post route with ' + req.body);

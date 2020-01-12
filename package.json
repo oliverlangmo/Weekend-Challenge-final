@@ -10,8 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "mongoose": "^4.5.2"
+    "@material/card": "^4.0.0",
+    "angular": "^1.7.6",
+    "angular-animate":"^1.7.6",
+    "angular-aria":"^1.7.6",
+    "angular-messages":"^1.7.6",
+    "angular-material": "^1.1.21",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.7"
   }
 }
