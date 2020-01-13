@@ -29,16 +29,17 @@ myApp.controller('animalController', ['$scope', '$http', function($scope, $http)
   });
 $scope.recvPet();
 };
-//deletes expense from DB
-$scope.deletePet = function(){
+//deletes pet from DB
+$scope.deletePet = function(item){
+  var petId = item.currentTarget.getAttribute("data-id");
   var petToDelete = {
-   id:event.target.id
+   id: petId
   };
   console.log('delete this:',petToDelete);
  $http({
  method:'DELETE',
- url:'/deleteExpense',
- data: expenseToDelete,
+ url:'/deletePet',
+ data: petToDelete,
  headers: {'Content-Type': 'application/json;charset=utf-8'}
    }).then( function mySuccess( response ) {
              console.log( response.data ) ;

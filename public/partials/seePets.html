@@ -2,13 +2,13 @@
   <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
     <md-card ng-repeat="pet in allThePets">
         <div class="md-card" >
-           <span class="md-title" id="{{pet._id}}"><strong>Pet Name: </strong> {{pet.pet_name }}</span>
-           <td><strong>Pet Kind: </strong> {{pet.pet_kind }}</td>
-           <td><strong>Pet Age: </strong> {{pet.pet_age}}</td>
-           <td><img style="width:300px;height:300px;"ng-src="{{pet.pet_pic}}" ></td>
+           <p class="md-title"><strong>Pet Name: </strong> {{pet.pet_name }}</p>
+           <p> <strong>Pet Kind: </strong> {{pet.pet_kind }}</p>
+           <p><strong>Pet Age: </strong> {{pet.pet_age}}</p>
+           <img style="width:300px;height:300px;"ng-src="{{pet.pet_pic}}">
            <md-card-actions layout="row" layout-align="end center">
               <md-button>Update</md-button>
-              <md-button>Delete</md-button>
+              <md-button data-id="{{pet._id}}" ng-click="deletePet($event)">Delete</md-button>
            </md-card-actions>
          </div>
     </md-card>

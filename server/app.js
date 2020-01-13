@@ -61,3 +61,18 @@ app.post('/addPet', function(req,res){
         res.send( data );
       });
     });
+
+  app.delete('/deletePet', function (req, res){
+
+  console.log('delete route w:', req.body);
+
+      addpetToDB.findOne({_id: req.body.id}, function(err, userResult) {
+        if(err){
+          console.log(err);
+          res.sendStatus(500);
+        }else{
+          addpetToDB.deleteOne({_id: userResult._id}, function(err) {});
+          res.sendStatus(200);
+        }
+      });
+    });// end delete
