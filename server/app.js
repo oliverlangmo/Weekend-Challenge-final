@@ -10,7 +10,7 @@ var urlencodedParser = bodyParser.urlencoded({extended:false});
 var addpetToDB = require('../models/addPet');
 //connect to mongoDB
 var mongoURI = "mongodb://localhost:27017/petdb";
-mongoose.connect(mongoURI);
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 
 
@@ -76,3 +76,9 @@ app.post('/addPet', function(req,res){
         }
       });
     });// end delete
+    app.put('/updatePet', function(req,res){
+    console.log('update route with:', req.body);
+    var query = {_id: req.body.id};
+addpetToDB.replaceOne(query, {pet_name: req.body.pet_name, pet_kind: req.body.pet_kind, pet_age: req.body.pet_age, pet_pic: req.body.pet_pic}, function(err){
+ });
+});

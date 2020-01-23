@@ -1,13 +1,13 @@
 <div ng-controller='animalController' ng-init='recvPet()'>
   <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
     <md-card ng-repeat="pet in allThePets">
-        <div class="md-card" >
+        <div class="md-card">
            <p class="md-title"><strong>Pet Name: </strong> {{pet.pet_name }}</p>
            <p> <strong>Pet Kind: </strong> {{pet.pet_kind }}</p>
            <p><strong>Pet Age: </strong> {{pet.pet_age}}</p>
            <img style="width:300px;height:300px;"ng-src="{{pet.pet_pic}}">
            <md-card-actions layout="row" layout-align="end center">
-              <md-button>Update</md-button>
+              <md-button ng-click="showAdvanced($event)" data-id="{{pet._id}}">Update</md-button>
               <md-button data-id="{{pet._id}}" ng-click="deletePet($event)">Delete</md-button>
            </md-card-actions>
          </div>
