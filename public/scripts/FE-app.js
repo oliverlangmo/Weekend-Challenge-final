@@ -129,7 +129,7 @@ $scope.showAdvanced = function(ev) {
               }, function myError( response ) {
                   console.log( response.statusText );
     });
-    // location.reload();
+      location.reload();
     };
   }
 }]);
